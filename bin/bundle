@@ -21,28 +21,19 @@ m = Module.new do
     ENV['BUNDLER_VERSION']
   end
 
-  # def cli_arg_version
-  #   return unless invoked_as_script? # don't want to hijack other binstubs
-  #   # return unless 'update'.start_with?(ARGV.first || ' ') # must be running `bundle update`
-  #   return unless ARGV.first == 'update'
-
-  #   bundler_version = nil
-  #   update_index = nil
-  #   ARGV.each_with_index do |a, i|
-  #     bundler_version = a if update_index && update_index.succ == i && a =~ Gem::Version::ANCHORED_VERSION_PATTERN
-  #     next unless a =~ /\A--bundler(?:[= ](#{Gem::Version::VERSION_PATTERN}))?\z/
-
-  #     bundler_version = Regexp.last_match(1)
-  #     update_index = i
-  #   end
-  #   bundler_version
-  # end
-
   def cli_arg_version
     return unless invoked_as_script? && ARGV.first == 'update'
 
-    update_index = ARGV.find_index { |a| a =~ /\A--bundler(?:[= ](#{Gem::Version::VERSION_PATTERN}))?\z/ }
-    ARGV[update_index.succ] =~ Gem::Version::ANCHORED_VERSION_PATTERN if update_index
+    bundler_version = nil
+    update_index = nil
+    ARGV.each_with_index do |a, i|
+      bundler_version = a if update_index && update_index.succ == i && a =~ Gem::Version::ANCHORED_VERSION_PATTERN
+      next unless a =~ /\A--bundler(?:[= ](#{Gem::Version::VERSION_PATTERN}))?\z/
+
+      bundler_version = Regexp.last_match(1)
+      update_index = i
+    end
+    bundler_version
   end
 
   def gemfile
