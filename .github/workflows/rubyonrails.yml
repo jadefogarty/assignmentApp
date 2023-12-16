@@ -51,10 +51,10 @@ jobs:
           bundler-cache: true
       - name: Grant execute permissions and run RuboCop
         run: |
-          icacls bundle.exe /grant Users:(RX)
-          icacls rails.exe /grant Users:(RX)
-          icacls rake.exe /grant Users:(RX)
-          icacls setup.exe /grant Users:(RX)
+          chmod +x bundle.exe
+          chmod +x rails.exe
+          chmod +x rake.exe
+          chmod +x setup.exe
       # Add or replace any other lints here
       - name: Security audit dependencies
         run: bundle exec bundler-audit --update
