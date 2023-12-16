@@ -54,6 +54,7 @@ jobs:
           ls
       - name: Grant execute permissions and run RuboCop
         run: |
+          cd bin
           chmod +x bundle
           chmod +x rails
           chmod +x rake
