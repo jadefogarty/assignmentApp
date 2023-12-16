@@ -51,7 +51,6 @@ jobs:
           bundler-cache: true
       - name: Grant execute permissions and run RuboCop
         run: |
-          cd ../bin
           icacls bundle.exe /grant Users:(RX)
           icacls rails.exe /grant Users:(RX)
           icacls rake.exe /grant Users:(RX)
