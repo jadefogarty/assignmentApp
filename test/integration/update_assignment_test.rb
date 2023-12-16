@@ -21,7 +21,7 @@ class UpdateAssignmentTest < ActionDispatch::IntegrationTest
 
     # send a get request to get all assignments
     get '/assignments'
-    puts(response.parsed_body)
+    # puts(response.parsed_body)
     # checks response is correct (4 test entries)
     assignment_response = response.parsed_body
     assert_response :ok
@@ -29,7 +29,7 @@ class UpdateAssignmentTest < ActionDispatch::IntegrationTest
 
     # get the updated assignment details
     get "/assignments/#{assignment.id}"
-    puts(response.parsed_body)
+    # puts(response.parsed_body)
     updated_assignment_response = response.parsed_body
 
     # check the submitted parameter for the assignment updated in this test
