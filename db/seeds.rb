@@ -10,7 +10,7 @@ require 'faker'
     lecturer: Faker::Name.name,
     due_date: Faker::Time.between(from: DateTime.now, to: DateTime.now + 30),
     weighting: Faker::Number.between(from: 1, to: 100).to_f,
-    status: ['Not', 'Started Started Completed'].sample,
+    status: ['Not Started', 'Started', 'Completed'].sample,
     submitted: Faker::Boolean.boolean
   )
 end
