@@ -18,4 +18,14 @@ class CreateAssignmentTest < ActionDispatch::IntegrationTest
     get "/assignments/#{assignment.id}"
     assert_response :ok
   end
+
+  test 'view details of an assignment that doesnt exist' do
+    # create a variable and assign it the value of a fixture
+    assignments(:coding_assignment)
+
+    # send a get request to get assignment details that doesnt exist
+    get '/assignments/123'
+    # no assignment found
+    assert_response :not_found
+  end
 end

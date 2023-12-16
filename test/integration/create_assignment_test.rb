@@ -79,4 +79,19 @@ class CreateAssignmentTest < ActionDispatch::IntegrationTest
     # check the submitted parameter for the assignment created in this test
     assert_equal 'Requirements Specification', assignment_response[4]['name']
   end
+
+
+  test 'create an assignment with a blank field' do
+    # send a post request to the api to create a new assignment with an empty field
+    post '/assignments', params: { assignment: { name: 'Lab Report',
+                                                 description: '',
+                                                 module: 'Security Testing',
+                                                 lecturer: 'john Doe',
+                                                 due_date: '2023-12-26 11:23:54',
+                                                 weighting: 90.0,
+                                                 status: 'Started',
+                                                 submitted: false } }
+    # checks response to see if assignment was created
+    assert_response :unprocessable_entity
+  end
 end

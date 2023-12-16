@@ -6,7 +6,7 @@ class UpdateAssignmentTest < ActionDispatch::IntegrationTest
   test 'edit coding assignment' do
     # create a variable and assign it the value of a fixture
     assignment = assignments(:coding_assignment)
-    puts(assignment.id)
+    # puts(assignment.id)
     # patch request to update the description from "java" to "python"
     patch "/assignments/#{assignment.id}", params: { assignment: { name: 'Coding Project',
                                                                    description: 'Create a python application',
@@ -68,5 +68,22 @@ class UpdateAssignmentTest < ActionDispatch::IntegrationTest
     # check the submitted parameter for the assignment updated in this test
     assert_equal 'Completed', updated_assignment_response['status']
     assert_equal true, updated_assignment_response['submitted']
+  end
+
+  test 'edit coding assignment but leave a field empty' do
+    # create a variable and assign it the value of a fixture
+    assignment = assignments(:coding_assignment)
+    # puts(assignment.id)
+    # patch request to update the assignemnt with an empty field
+    patch "/assignments/#{assignment.id}", params: { assignment: { name: 'Coding Project',
+                                                                   description: 'Create a java application',
+                                                                   module: '',
+                                                                   lecturer: 'Jane Doe',
+                                                                   due_date: '2023-11-29 12:42:00',
+                                                                   weighting: 100.0,
+                                                                   status: 'Completed',
+                                                                   submitted: true } }
+    # checks response to see if assignment was updated
+    assert_response :unprocessable_entity
   end
 end

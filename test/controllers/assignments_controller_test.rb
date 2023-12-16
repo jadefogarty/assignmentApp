@@ -55,4 +55,19 @@ class AssignmentsControllerTest < ActionDispatch::IntegrationTest
 
     assert_response :no_content
   end
+
+
+  test 'create an assignment with an empty field' do
+    # send a post request to the api to create a new assignment with an empty field
+    post '/assignments', params: { assignment: { name: 'Quiz',
+                                                 description: '',
+                                                 module: 'Software Testing',
+                                                 lecturer: 'John Doe',
+                                                 due_date: '',
+                                                 weighting: 20.0,
+                                                 status: 'Started',
+                                                 submitted: false } }
+    # checks response to see if assignment was created
+    assert_response :unprocessable_entity
+  end
 end

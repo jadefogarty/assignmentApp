@@ -59,3 +59,6 @@ gem 'faker', require: false
 
 # install the simplecov gem to test code coverage of tests
 gem 'simplecov', require: false
+
+# install capybara
+gem 'capybara', require: false
