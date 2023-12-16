@@ -1,15 +1,17 @@
-source "https://rubygems.org"
+# frozen_string_literal: true
 
-ruby "3.2.2"
+source 'https://rubygems.org'
+
+ruby '3.2.2'
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
-gem "rails", "~> 7.1.2"
+gem 'rails', '~> 7.1.2'
 
 # Use sqlite3 as the database for Active Record
-gem "sqlite3", "~> 1.4"
+gem 'sqlite3', '~> 1.4'
 
 # Use the Puma web server [https://github.com/puma/puma]
-gem "puma", ">= 5.0"
+gem 'puma', '>= 5.0'
 
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 # gem "jbuilder"
@@ -24,21 +26,21 @@ gem "puma", ">= 5.0"
 # gem "bcrypt", "~> 3.1.7"
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem "tzinfo-data", platforms: %i[ windows jruby ]
+gem 'tzinfo-data', platforms: %i[windows jruby]
 
 # Reduces boot times through caching; required in config/boot.rb
-gem "bootsnap", require: false
+gem 'bootsnap', require: false
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin Ajax possible
-#install rack-cors to allow react (and other) clients to access data from rails server
-gem "rack-cors"
+# install rack-cors to allow react (and other) clients to access data from rails server
+gem 'rack-cors'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
-  gem "debug", platforms: %i[ mri windows ]
+  gem 'debug', platforms: %i[mri windows]
 end
 
 group :development do
@@ -46,12 +48,18 @@ group :development do
   # gem "spring"
 end
 
+group :development, :test do
+  gem 'brakeman'
+  gem 'bundler-audit'
+  gem 'debug', platforms: %i[mri mingw x64_mingw]
+  gem 'pg'
+  gem 'rubocop'
+  gem 'rubocop-rails'
+  gem 'ruby_audit'
+end
 
-#install brakeman gem to scan for security vulnerabilites
-gem 'brakeman', require: false
-
-#install the faker gem to add entries to the database
+# install the faker gem to add entries to the database
 gem 'faker', require: false
 
-#install the simplecov gem to test code coverage of tests
+# install the simplecov gem to test code coverage of tests
 gem 'simplecov', require: false

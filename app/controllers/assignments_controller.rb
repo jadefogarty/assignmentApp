@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class AssignmentsController < ApplicationController
-  before_action :set_assignment, only: %i[ show update destroy ]
+  before_action :set_assignment, only: %i[show update destroy]
 
   # GET /assignments
   def index
@@ -39,13 +41,15 @@ class AssignmentsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_assignment
-      @assignment = Assignment.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def assignment_params
-      params.require(:assignment).permit(:name, :description, :module, :lecturer, :due_date, :weighting, :status, :submitted)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_assignment
+    @assignment = Assignment.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def assignment_params
+    params.require(:assignment).permit(:name, :description, :module, :lecturer, :due_date, :weighting, :status,
+                                       :submitted)
+  end
 end
