@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# Create Assignment
 class CreateAssignments < ActiveRecord::Migration[7.1]
   def change
     create_table :assignments do |t|
@@ -11,7 +12,6 @@ class CreateAssignments < ActiveRecord::Migration[7.1]
       t.float :weighting
       t.string :status
       t.boolean :submitted
-
       t.timestamps
     end
   end

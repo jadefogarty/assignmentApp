@@ -15,7 +15,15 @@ class AssignmentsControllerTest < ActionDispatch::IntegrationTest
   test 'should create assignment' do
     assert_difference('Assignment.count') do
       post assignments_url,
-           params: { assignment: { description: @assignment.description, due_date: @assignment.due_date, lecturer: @assignment.lecturer, module: @assignment.module, name: @assignment.name, status: @assignment.status, submitted: @assignment.submitted, weighting: @assignment.weighting } }, as: :json
+           params: { assignment:
+                      { description: @assignment.description,
+                        due_date: @assignment.due_date,
+                        lecturer: @assignment.lecturer,
+                        module: @assignment.module,
+                        name: @assignment.name,
+                        status: @assignment.status,
+                        submitted: @assignment.submitted,
+                        weighting: @assignment.weighting } }, as: :json
     end
 
     assert_response :created
@@ -28,7 +36,15 @@ class AssignmentsControllerTest < ActionDispatch::IntegrationTest
 
   test 'should update assignment' do
     patch assignment_url(@assignment),
-          params: { assignment: { description: @assignment.description, due_date: @assignment.due_date, lecturer: @assignment.lecturer, module: @assignment.module, name: @assignment.name, status: @assignment.status, submitted: @assignment.submitted, weighting: @assignment.weighting } }, as: :json
+          params: { assignment:
+            { description: @assignment.description,
+              due_date: @assignment.due_date,
+              lecturer: @assignment.lecturer,
+              module: @assignment.module,
+              name: @assignment.name,
+              status: @assignment.status,
+              submitted: @assignment.submitted,
+              weighting: @assignment.weighting } }, as: :json
     assert_response :success
   end
 
