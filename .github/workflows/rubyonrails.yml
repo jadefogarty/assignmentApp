@@ -49,10 +49,7 @@ jobs:
         uses: ruby/setup-ruby@55283cc23133118229fd3f97f9336ee23a179fcf # v1.146.0
         with:
           bundler-cache: true
-      - name: List files in the bin directory
-        run:
-          ls
-      - name: Grant execute permissions and run RuboCop
+      - name: Grant execute permissions
         run: |
           cd bin
           chmod +x bundle
@@ -66,5 +63,5 @@ jobs:
         run: bundle exec brakeman -q -w2
       - name: Lint Ruby files
         run: bundle exec rubocop --parallel -A
-      - name: Auto correct rubocop offences
-        run: bundle exec rubocop --auto-correct
+      - name: Re-run lint files after autocorrect
+        run: bundle exec rubocop --parallel
