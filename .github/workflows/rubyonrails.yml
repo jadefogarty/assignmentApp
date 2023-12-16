@@ -51,7 +51,6 @@ jobs:
           bundler-cache: true
       - name: Grant execute permissions and run RuboCop
         run: |
-          cd /usr/bin
           chmod +x bundle
           chmod +x rails
           chmod +x rake
