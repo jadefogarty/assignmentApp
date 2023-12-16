@@ -6,7 +6,7 @@ class UpdateAssignmentTest < ActionDispatch::IntegrationTest
 test 'edit coding assignment' do
         # create a variable and assign it the value of a fixture
         assignment = assignments(:coding_assignment)
-        puts(assignment)
+        puts(assignment.id)
         # patch request to update the description from "java" to "python"
         patch "/assignments/#{assignment.id}", params: { assignment: { name: 'Coding Project',
                                                                     description: 'Create a python application',
@@ -27,8 +27,13 @@ test 'edit coding assignment' do
         assert_response :ok
         assert_equal 4, assignment_response.length
 
+        # get the updated assignment details
+        get "/assignments/#{assignment.id}"
+        puts(response.parsed_body)
+        updated_assignment_response = response.parsed_body
+
         # check the submitted parameter for the assignment updated in this test
-        assert_equal 'Create a python application', assignment_response[1]['description']
+        assert_equal 'Create a python application', updated_assignment_response['description']
     end
 
     test 'edit testing assignment' do
@@ -49,14 +54,19 @@ test 'edit coding assignment' do
   
         # send a get request to get all assignments
         get '/assignments'
-    # puts(response.parsed_body)
+        # puts(response.parsed_body)
         # checks response is correct (4 test entries)
         assignment_response = response.parsed_body
         assert_response :ok
         assert_equal 4, assignment_response.length
 
+        # get the updated assignment details
+        get "/assignments/#{assignment.id}"
+        # puts(response.parsed_body)
+        updated_assignment_response = response.parsed_body
+
         # check the submitted parameter for the assignment updated in this test
-        assert_equal 'Completed', assignment_response[2]['status']
-        assert_equal true, assignment_response[2]['submitted']
+        assert_equal 'Completed', updated_assignment_response['status']
+        assert_equal true, updated_assignment_response['submitted']
     end
       end
