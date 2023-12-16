@@ -1,0 +1,42 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+
+testing_assignment:
+  name: Testing Application
+  description: Perform testing on web application
+  module: Software Testing
+  lecturer: John Doe
+  due_date: 2023-12-16 23:59:00
+  weighting: 60.0
+  status: Started
+  submitted: false
+
+coding_assignment:
+  name: Coding Project
+  description: Create a java application
+  module: Programming
+  lecturer: Jane Doe
+  due_date: 2023-11-29 12:42:00
+  weighting: 100.0
+  status: Completed
+  submitted: true
+
+one:
+  name: MyString
+  description: MyString
+  module: MyString
+  lecturer: MyString
+  due_date: 2023-12-13 16:54:25
+  weighting: 1.5
+  status: MyString
+  submitted: false
+
+two:
+  name: MyString
+  description: MyString
+  module: MyString
+  lecturer: MyString
+  due_date: 2023-12-13 16:54:25
+  weighting: 1.5
+  status: MyString
+  submitted: false
