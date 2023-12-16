@@ -49,6 +49,9 @@ jobs:
         uses: ruby/setup-ruby@55283cc23133118229fd3f97f9336ee23a179fcf # v1.146.0
         with:
           bundler-cache: true
+      - name: List files in the bin directory
+        run:
+          ls
       - name: Grant execute permissions and run RuboCop
         run: |
           chmod +x bundle
